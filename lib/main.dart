@@ -1,15 +1,22 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
       title: 'Question2',
-      home: DashboardScreen(),
+      home: LoginScreen(),
     ));
 
 class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Timer(
+      Duration(seconds: 5),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => DashboardScreen()),
+        );
+      },
+    );
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -41,13 +48,23 @@ class LoginScreen extends StatelessWidget {
               heroTag: null,
               label: Text('If login fails'),
               backgroundColor: Colors.red,
-              onPressed: null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ErrorScreen()),
+                );
+              },
             ),
             FloatingActionButton.extended(
               heroTag: null,
               label: Text('If login succeeds'),
               backgroundColor: Colors.green,
-              onPressed: null,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SplashScreen()),
+                );
+              },
             ),
           ],
         ),
@@ -72,6 +89,12 @@ class DashboardScreen extends StatelessWidget {
 class ErrorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Timer(
+      Duration(seconds: 2),
+      () {
+        Navigator.pop(context);
+      },
+    );
     return Scaffold(
       appBar: AppBar(title: Text('Login failed')),
       body: Column(
