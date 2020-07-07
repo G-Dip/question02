@@ -1,8 +1,11 @@
 Question (a):
-
+Screen navigation influtter is handled by Navigator possess some methods like
+Navigator.push and Navigator.pop.
+Navigator.push adds new route to the current stack.
+Navigator.pop is used to remove the top route of the stack.
 
 
 Question (b):
-
-
+Navigator.pushReplacement()
+Because the application has splash screen.
 
